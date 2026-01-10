@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const preload = path.join(__dirname, 'preload.js')
 
-const page_home = null
+const page_home = path.join(__dirname, '../app/login/login.html')
 const page_client = null // colocar 
 
 
@@ -26,3 +26,7 @@ const criarJanela = () => {
     win.removeMenu()
     win.loadFile(page_home)
 }
+
+app.whenReady().then(() => {
+    criarJanela()
+})
