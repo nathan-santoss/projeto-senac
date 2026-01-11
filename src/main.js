@@ -30,3 +30,31 @@ const criarJanela = () => {
 app.whenReady().then(() => {
     criarJanela()
 })
+
+// tipo 1 = funcionarios
+// tipo 2 = clientes
+let usuarios = [
+    {
+        email: 'funcionarios@gmail.com',
+        senha: '12345',
+        type: '1'
+    },
+    {
+        email: 'cliente@gmail.com',
+        senha: '12345',
+        type: '2'
+    }
+]
+//funçoes do preload
+ipcMain.handle('solicitar-login', (event, usuario) => {
+    console.log(usuario);
+    let existe = usuarios.find(user => user.email === usuario.login)
+    
+    console.log(existe);
+    if(existe){
+        return existe
+    }
+    else{
+        return false
+    }
+})
