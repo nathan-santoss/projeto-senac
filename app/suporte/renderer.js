@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         divConcluidos.innerHTML = `<div class="coluna-titulo">Concluídos Hoje</div>`
 
         completos.forEach(task => {
-            containerConcluidos.innerHTML += `
+            divConcluidos.innerHTML += `
                 <div class="card-atendimento card-fechado">
                     <div class="header-plataforma">
                         <span class="tag-plataforma ios">${task.plataforma}</span>
