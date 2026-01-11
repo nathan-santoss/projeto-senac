@@ -6,6 +6,25 @@
     <style>
         body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #f0f2f5; margin: 0; }
         .cabecalho { background: #3c4043; color: white; padding: 12px 40px; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Estilização estratégica para o botão de Logout */
+        .botao-logout {
+            background: transparent;
+            color: #bdc1c6;
+            border: 1px solid #5f6368;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: 15px;
+        }
+        .botao-logout:hover {
+            background: #5f6368;
+            color: white;
+        }
+
         .main { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
         .coluna-titulo { font-size: 14px; font-weight: 600; color: #5f6368; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px; }
         .card-atendimento { background: white; border-radius: 16px; border: 1px solid #dadce0; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
@@ -28,7 +47,10 @@
 <body>
     <div class="cabecalho">
         <strong>Gestão de Chamados</strong>
-        <span id="agent-name"></span>
+        <div>
+            <span id="agent-name"></span>
+            <button id="logout-bt" type="button" class="botao-logout">Sair</button>
+        </div>
     </div>
     <div class="main">
         <div id="chamados-atuais">
@@ -50,7 +72,6 @@
         </div>
         <div>
             <div id="cards-concluidos" class="coluna-titulo">Concluídos Hoje</div>
-            
         </div>
     </div>
     <script src="renderer.js"></script>

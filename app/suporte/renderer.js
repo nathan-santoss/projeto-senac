@@ -51,3 +51,8 @@ send_bt.addEventListener('click', (event) => {
     }, 100);
 
 })
+
+const logout_bt = document.getElementById('logout-bt')
+logout_bt.addEventListener('click', (event) => {
+    window.api.changePage('login')
+})
