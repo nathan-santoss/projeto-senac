@@ -14,7 +14,7 @@ login_bt.addEventListener('click', (event) => {
                 window.location.href = '../cliente/cliente.html'
                 break
             default:
-                alert('Usuário ou senha incorretos!')
+                location.reload()
         }
     })
 })

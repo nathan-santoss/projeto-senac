@@ -92,7 +92,7 @@ ipcMain.handle('abrir-chamado', (event) => {
 
 // atualizar chamados concluidos
 ipcMain.on('atualizar-chamado', (event, chamado) => {
-    let indexChamado = lista_chamados.indexOf(task => task.nome === chamado.nome && task.titulo === chamado.titulo && task.relato === chamado.relato)
+    let indexChamado = lista_chamados.findIndex(task => task.id === chamado.id)
     if(indexChamado === -1){return}
     lista_chamados[indexChamado].status === 'concluido'
 })
@@ -102,12 +102,6 @@ ipcMain.on('atualizar-chamado', (event, chamado) => {
 
 
 // imprimir chamados prontos
-let concluidos = []
 ipcMain.handle('abrir-concluidos', (event) => {
-    lista_chamados.forEach(pronto => {
-        if(pronto.status === 'concluido'){
-            concluidos.push(pronto)
-        }
-    });
-    return concluidos
+    return lista_chamados.filter(task => task.status === 'concluido')
 })
