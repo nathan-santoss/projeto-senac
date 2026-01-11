@@ -78,7 +78,10 @@ ipcMain.handle('user-checked', (event) => {
 
 // coletando solicitação do cliente
 let lista_chamados = []
+let chamadosTotais = 0
 ipcMain.handle('guardar-chamado', (event, chamado) => {
+    chamado.id = `2026-00${chamadosTotais}`
+    chamadosTotais++
     lista_chamados.push(chamado)
 })
 

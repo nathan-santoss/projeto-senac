@@ -18,9 +18,8 @@ let dataAtual = new Date().toLocaleDateString('pt-BR', {
     });
 
 
-let chamadosTotais = 0
+
 enviar_bt.addEventListener('click', (event) => {
-    chamadosTotais++
     const chamado = {
         nome: cliente_nome,
         titulo: document.getElementById('request-title').value,
@@ -29,7 +28,7 @@ enviar_bt.addEventListener('click', (event) => {
         relato: document.getElementById('relato').value,
         criacao: dataAtual,
         status: 'pendente',
-        id: `2026/${chamadosTotais}`
+        id: undefined
     }
     window.api.registerTask(chamado).then((result) => {
         location.reload()
