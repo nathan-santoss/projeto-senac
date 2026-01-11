@@ -94,7 +94,7 @@ ipcMain.handle('abrir-chamado', (event) => {
 ipcMain.on('atualizar-chamado', (event, chamado) => {
     let indexChamado = lista_chamados.findIndex(task => task.id === chamado.id)
     if(indexChamado === -1){return}
-    lista_chamados[indexChamado].status === 'concluido'
+    lista_chamados[indexChamado].status = 'concluido'
 })
 
 

@@ -8,16 +8,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
     })
 
     window.api.completedTask().then(completos => {
+        let divConcluidos = document.getElementById('cards-concluidos')
+
+        divConcluidos.innerHTML = `<div class="coluna-titulo">Concluídos Hoje</div>`
+
         completos.forEach(task => {
-            document.getElementById('cards-concluidos').innerHTML = `
-            <div class="card-atendimento card-fechado">
-                <div class="header-plataforma">
-                    <span id="plataform-completed" class="tag-plataforma ios">${task.plataforma}</span>
-                </div>
-                <div id="client-completed" style="font-weight: 500;">${task.nome}</div>
-                <p id="titulo-completed" style="font-size: 13px; color: #5f6368;">${task.titulo}</p>
-                <div style="font-size: 12px; color: #1e8e3e; font-weight: 600;">✓ RESOLVIDO</div>
-            </div>`
+            containerConcluidos.innerHTML += `
+                <div class="card-atendimento card-fechado">
+                    <div class="header-plataforma">
+                        <span class="tag-plataforma ios">${task.plataforma}</span>
+                    </div>
+                    <div style="font-weight: 500;">${task.nome}</div>
+                    <p style="font-size: 13px; color: #5f6368;">${task.titulo}</p>
+                    <div style="font-size: 12px; color: #1e8e3e; font-weight: 600;">✓ RESOLVIDO</div>
+                </div>`
         });
     })
 })
@@ -25,16 +29,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 let chamadoAtual
 const carregar_chamado = (chamados) => {
-    if(chamados.length > 0){
-        chamados.forEach(chamado => {
-            if(chamado.status === 'pendente'){
-                document.getElementById('cliente-nome').innerHTML = `${chamado.nome}`
-                document.getElementById('plataforma').innerText = `${chamado.plataforma}`
-                document.getElementById('titulo').innerHTML = `<strong>Assunto:</strong> ${chamado.titulo}`
-                document.getElementById('relato').innerText = `"${chamado.relato}"`
-            }
-            chamadoAtual = chamado
-        });
+    const pendencias = chamados.filter(c => c.status === 'pendente')
+    if(pendencias.length > 0){
+        const chamado = pendencias[0]; 
+        document.getElementById('cliente-nome').innerHTML = `${chamado.nome}`
+        document.getElementById('plataforma').innerHTML = `${chamado.plataforma}`
+        document.getElementById('titulo').innerHTML = `<strong>Assunto:</strong> ${chamado.titulo}`
+        document.getElementById('relato').innerHTML = `"${chamado.relato}"`
+        chamadoAtual = chamado;
     }else{
         document.getElementById('chamados-atuais').innerHTML = `<strong>Sem chamados no     momento</strong>`
         return
