@@ -5,3 +5,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
         name_agent.innerText = `${agente.nome}`
     })
 })
+

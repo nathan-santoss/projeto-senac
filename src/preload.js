@@ -2,6 +2,7 @@ import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld('api', {
     loginRequest: (user) => ipcRenderer.invoke('solicitar-login', user),
-    userchecked: () => ipcRenderer.invoke('user-checked')
+    userchecked: () => ipcRenderer.invoke('user-checked'),
+    registerTask: (task) => ipcRenderer.invoke('guardar-chamado', task)
     
 })

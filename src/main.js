@@ -48,6 +48,9 @@ let usuarios = [
     }
 ]
 //funçoes do preload
+
+
+// login personalizado com nome
 ipcMain.handle('solicitar-login', (event, usuario) => {
     // console.log(usuario);
     let existe = usuarios.find(user => user.email === usuario.login)
@@ -65,4 +68,10 @@ let usuarioLogado
 
 ipcMain.handle('user-checked', (event) => {
     return usuarioLogado
+})
+
+// coletando solicitação do cliente
+let lista_chamados = []
+ipcMain.handle('guardar-chamado', (event, chamado) => {
+    lista_chamados.push(chamado)
 })
