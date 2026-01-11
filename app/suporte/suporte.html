@@ -1,13 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Painel Administrativo</title>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #f0f2f5; margin: 0; }
+        .cabecalho { background: #3c4043; color: white; padding: 12px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .main { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
+        .coluna-titulo { font-size: 14px; font-weight: 600; color: #5f6368; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px; }
+        .card-atendimento { background: white; border-radius: 16px; border: 1px solid #dadce0; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+        .info-chamado { background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #eee; }
+        .cliente-nome { font-size: 18px; font-weight: 500; color: #202124; margin-bottom: 5px; }
+        .dor-cliente { font-style: italic; color: #3c4043; font-size: 14px; background: #fff; padding: 10px; border-radius: 6px; border-left: 4px solid #1a73e8; }
+        .resposta-tecnica { width: 100%; border: 1px solid #dadce0; border-radius: 8px; padding: 12px; font-family: inherit; margin-top: 10px; box-sizing: border-box; min-height: 100px; }
+        .botao-concluir { background-color: #1e8e3e; color: white; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 500; cursor: pointer; margin-top: 12px; }
+        .card-fechado { background: #fdfdfd; opacity: 0.8; border-left: 6px solid #1e8e3e; }
+    </style>
 </head>
 <body>
- <H1>Suporte</H1>
- <p>Como podemos ajudar você hoje?</p>
+    <div class="cabecalho">
+        <strong>Gestão de Chamados</strong>
+        <span>Analista: Rodrigo Antunes</span>
+    </div>
+    <div class="main">
+        <div>
+            <div class="coluna-titulo">Aguardando Resposta</div>
+            <div class="card-atendimento">
+                <div class="cliente-nome">Marcos Silva</div>
+                <div class="info-chamado">
+                    <p style="margin: 0 0 10px 0;"><strong>Assunto:</strong> Jogo fechando sozinho</p>
+                    <div class="dor-cliente">
+                        "Estou tentando jogar faz 3 dias e toda vez que abro a loja o app fecha. Já perdi uma promoção por causa disso e estou muito frustrado."
+                    </div>
+                </div>
+                <label style="font-size: 14px; font-weight: 500;">Sua Resposta Técnica:</label>
+                <textarea class="resposta-tecnica" placeholder="Explique o procedimento realizado..."></textarea>
+                <button type="button" class="botao-concluir">Enviar e Finalizar</button>
+            </div>
+        </div>
+        <div>
+            <div class="coluna-titulo">Concluídos Hoje</div>
+            <div class="card-atendimento card-fechado">
+                <div style="font-weight: 500;">Ana Beatriz</div>
+                <p style="font-size: 13px; color: #5f6368;">Assunto: Reembolso aprovado</p>
+                <div style="font-size: 12px; color: #1e8e3e; font-weight: 600;">✓ RESOLVIDO</div>
+            </div>
+        </div>
+    </div>
 
     <script src="renderer.js"></script>
 </body>

@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login - Suporte</title>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container-login { background: #ffffff; padding: 48px 40px; border-radius: 16px; width: 360px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; text-align: center; }
+        .logo-marca { font-size: 24px; font-weight: 600; color: #1a73e8; margin-bottom: 10px; }
+        .titulo-login { font-size: 22px; color: #202124; margin-bottom: 24px; font-weight: 400; }
+        .campo-entrada { width: 100%; padding: 14px; margin-bottom: 16px; border: 1px solid #dadce0; border-radius: 8px; font-size: 16px; box-sizing: border-box; outline: none; }
+        .campo-entrada:focus { border: 2px solid #1a73e8; padding: 13px; }
+        .botao-entrar { width: 100%; padding: 12px; background-color: #1a73e8; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
+        .botao-entrar:hover { background-color: #1557b0; }
+        .esqueceu-senha { display: block; margin-top: 20px; color: #1a73e8; font-size: 14px; text-decoration: none; font-weight: 500; }
+    </style>
 </head>
 <body>
-  <h1>Login</h1>
-  <p>Por favor, insira suas credenciais para acessar sua conta.</p>
+    <div class="container-login">
+        <div class="logo-marca">Suporte Central</div>
+        <h2 class="titulo-login">Fazer login</h2>
+        <form>
+            <input type="text" class="campo-entrada" placeholder="E-mail ou usuário">
+            <input type="password" class="campo-entrada" placeholder="Sua senha">
+            <button type="submit" class="botao-entrar">Próxima</button>
+        </form>
+        <a href="#" class="esqueceu-senha">Esqueceu o e-mail?</a>
+    </div>
 
     <script src="renderer.js"></script>
 </body>

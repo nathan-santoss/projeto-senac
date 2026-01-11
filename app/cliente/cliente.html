@@ -1,13 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Área do Cliente</title>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #f0f2f5; margin: 0; color: #3c4043; }
+        .barra-topo { background: #ffffff; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e0e0e0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .logo { font-size: 20px; color: #1a73e8; font-weight: 600; }
+        .conteudo { max-width: 1200px; margin: 40px auto; display: flex; gap: 30px; padding: 0 20px; }
+        .cartao { background: #ffffff; padding: 32px; border-radius: 16px; border: 1px solid #dadce0; flex: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .titulo-card { font-size: 20px; margin: 0 0 24px 0; color: #202124; font-weight: 500; }
+        .rotulo { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: #5f6368; }
+        .campo { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #dadce0; border-radius: 8px; box-sizing: border-box; font-size: 14px; outline: none; }
+        .campo:focus { border: 2px solid #1a73e8; padding: 11px; }
+        .caixa-texto { height: 120px; resize: none; font-family: inherit; }
+        .botao-enviar { background-color: #1a73e8; color: white; border: none; padding: 12px 28px; border-radius: 24px; font-weight: 500; cursor: pointer; float: right; transition: box-shadow 0.2s; }
+        .botao-enviar:hover { box-shadow: 0 1px 6px rgba(26,115,232,0.4); }
+        .chamado-lista { border: 1px solid #f1f3f4; padding: 16px; border-radius: 12px; margin-bottom: 12px; background: #fafafa; }
+        .badge { font-size: 12px; padding: 4px 12px; border-radius: 10px; background: #e8f0fe; color: #1967d2; font-weight: 500; }
+    </style>
 </head>
 <body>
-  <h1>Cliente</h1>
-  <p>Bem-vindo à página do cliente!</p>
+    <header class="barra-topo">
+        <div class="logo">Suporte Games</div>
+        <div style="font-size: 14px;">Olá, <strong>Marcos Silva</strong></div>
+    </header>
+    <div class="conteudo">
+        <div class="cartao">
+            <h3 class="titulo-card">Relatar um Problema</h3>
+            <form>
+                <label class="rotulo">Assunto Resumido</label>
+                <input type="text" class="campo" placeholder="Ex: Jogo fechando sozinho">
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex: 1;">
+                        <label class="rotulo">Plataforma</label>
+                        <select class="campo">
+                            <option>Web</option>
+                            <option>Android</option>
+                            <option>iOS</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="rotulo">Data do início</label>
+                        <input type="date" class="campo">
+                    </div>
+                </div>
+                <label class="rotulo">O que está acontecendo? (Descreva sua dor)</label>
+                <textarea class="campo caixa-texto" placeholder="Conte-nos detalhes sobre o erro, mensagens que aparecem e como isso está afetando sua experiência..."></textarea>
+                <button type="button" class="botao-enviar">Abrir Chamado</button>
+            </form>
+        </div>
+        <div class="cartao">
+            <h3 class="titulo-card">Seu Histórico</h3>
+            <div class="chamado-lista">
+                <div style="display: flex; justify-content: space-between;">
+                    <strong>Erro no Login</strong>
+                    <span class="badge">Em Análise</span>
+                </div>
+                <p style="font-size: 13px; color: #5f6368; margin: 8px 0;">Aberto em 11/01/2026 via Web</p>
+            </div>
+            <div class="chamado-lista">
+                <div style="display: flex; justify-content: space-between;">
+                    <strong>Falha no PIX</strong>
+                    <span class="badge" style="background:#e6f4ea; color:#137333;">Resolvido</span>
+                </div>
+                <p style="font-size: 13px; color: #5f6368; margin: 8px 0;">Finalizado em 09/01/2026</p>
+            </div>
+        </div>
+    </div>
 
     <script src="renderer.js"></script>
 </body>
