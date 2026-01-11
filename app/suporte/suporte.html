@@ -9,6 +9,14 @@
         .main { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
         .coluna-titulo { font-size: 14px; font-weight: 600; color: #5f6368; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px; }
         .card-atendimento { background: white; border-radius: 16px; border: 1px solid #dadce0; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+        
+        .header-plataforma { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #f1f3f4; }
+        .tag-plataforma { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
+        .android { background: #e6f4ea; color: #1e8e3e; }
+        .ios { background: #f1f3f4; color: #3c4043; }
+        .web { background: #e8f0fe; color: #1a73e8; }
+        .origem-texto { font-size: 11px; color: #70757a; font-weight: 500; }
+
         .info-chamado { background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #eee; }
         .cliente-nome { font-size: 18px; font-weight: 500; color: #202124; margin-bottom: 5px; }
         .dor-cliente { font-style: italic; color: #3c4043; font-size: 14px; background: #fff; padding: 10px; border-radius: 6px; border-left: 4px solid #1a73e8; }
@@ -20,34 +28,31 @@
 <body>
     <div class="cabecalho">
         <strong>Gestão de Chamados</strong>
-        <span id="agent-name"></span>
+        <span id="agent-name "></span>
     </div>
     <div class="main">
-        <div>
+        <div id="chamados-atuais">
             <div class="coluna-titulo">Aguardando Resposta</div>
             <div class="card-atendimento">
-                <div class="cliente-nome">Marcos Silva</div>
+                <div class="header-plataforma">
+                    <span id="plataforma" class="tag-plataforma android"></span>
+                </div>
+                <div id="cliente-nome" class="cliente-nome"></div>
                 <div class="info-chamado">
-                    <p style="margin: 0 0 10px 0;"><strong>Assunto:</strong> Jogo fechando sozinho</p>
-                    <div class="dor-cliente">
-                        "Estou tentando jogar faz 3 dias e toda vez que abro a loja o app fecha. Já perdi uma promoção por causa disso e estou muito frustrado."
+                    <p id="titulo" style="margin: 0 0 10px 0;"></p>
+                    <div id="relato" class="dor-cliente">
                     </div>
                 </div>
                 <label style="font-size: 14px; font-weight: 500;">Sua Resposta Técnica:</label>
                 <textarea class="resposta-tecnica" placeholder="Explique o procedimento realizado..."></textarea>
-                <button type="button" class="botao-concluir">Enviar e Finalizar</button>
+                <button id="send-bt" type="button" class="botao-concluir">Enviar e Finalizar</button>
             </div>
         </div>
         <div>
-            <div class="coluna-titulo">Concluídos Hoje</div>
-            <div class="card-atendimento card-fechado">
-                <div style="font-weight: 500;">Ana Beatriz</div>
-                <p style="font-size: 13px; color: #5f6368;">Assunto: Reembolso aprovado</p>
-                <div style="font-size: 12px; color: #1e8e3e; font-weight: 600;">✓ RESOLVIDO</div>
-            </div>
+            <div id="cards-concluidos" class="coluna-titulo">Concluídos Hoje</div>
+            
         </div>
     </div>
-
     <script src="renderer.js"></script>
 </body>
 </html>

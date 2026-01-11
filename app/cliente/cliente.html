@@ -18,12 +18,19 @@
         .botao-enviar:hover { box-shadow: 0 1px 6px rgba(26,115,232,0.4); }
         .chamado-lista { border: 1px solid #f1f3f4; padding: 16px; border-radius: 12px; margin-bottom: 12px; background: #fafafa; }
         .badge { font-size: 12px; padding: 4px 12px; border-radius: 10px; background: #e8f0fe; color: #1967d2; font-weight: 500; }
+
+        .acoes-usuario { display: flex; align-items: center; gap: 20px; }
+        .botao-sair { background: transparent; color: #d93025; border: 1px solid #dadce0; padding: 6px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+        .botao-sair:hover { background: #fff1f0; border-color: #d93025; }
     </style>
 </head>
 <body>
     <header class="barra-topo">
         <div class="logo">Suporte Games</div>
-        <div style="font-size: 14px;" id="client-name"></div>
+        <div class="acoes-usuario">
+            <div style="font-size: 14px;" id="client-name"></div>
+            <button id="logout-bt" type="button" class="botao-sair">Sair</button>
+        </div>
     </header>
     <div class="conteudo">
         <div class="cartao">

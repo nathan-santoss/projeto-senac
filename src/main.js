@@ -48,7 +48,13 @@ let usuarios = [
     }
 ]
 //funçoes do preload
-
+ipcMain.on('mudar-pagina', (event, pagina) => {
+    switch(pagina){
+        case 'login':
+            win.loadFile(page_home)
+            break
+    }
+})
 
 // login personalizado com nome
 ipcMain.handle('solicitar-login', (event, usuario) => {
@@ -74,4 +80,34 @@ ipcMain.handle('user-checked', (event) => {
 let lista_chamados = []
 ipcMain.handle('guardar-chamado', (event, chamado) => {
     lista_chamados.push(chamado)
+})
+
+
+// imprimir novo chamado na tela do suporte
+ipcMain.handle('abrir-chamado', (event) => {
+    return lista_chamados
+})
+
+
+
+// atualizar chamados concluidos
+ipcMain.on('atualizar-chamado', (event, chamado) => {
+    let indexChamado = lista_chamados.indexOf(task => task.nome === chamado.nome && task.titulo === chamado.titulo && task.relato === chamado.relato)
+    if(indexChamado === -1){return}
+    lista_chamados[indexChamado].status === 'concluido'
+})
+
+
+
+
+
+// imprimir chamados prontos
+let concluidos = []
+ipcMain.handle('abrir-concluidos', (event) => {
+    lista_chamados.forEach(pronto => {
+        if(pronto.status === 'concluido'){
+            concluidos.push(pronto)
+        }
+    });
+    return concluidos
 })

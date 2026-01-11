@@ -1,7 +1,9 @@
+let cliente_nome
 document.addEventListener('DOMContentLoaded', (event) => {
     const client_name = document.getElementById('client-name')
     window.api.userchecked().then((cliente) => {
         client_name.innerHTML = `Olá, <strong>${cliente.nome}</strong>`
+        cliente_nome = cliente.nome
     })
 })
 
@@ -17,13 +19,21 @@ let dataAtual = new Date().toLocaleDateString('pt-BR', {
 
 enviar_bt.addEventListener('click', (event) => {
     const chamado = {
+        nome: cliente_nome,
         titulo: document.getElementById('request-title').value,
         plataforma: document.getElementById('plataform').value,
         data_incidente: document.getElementById('date').value,
         relato: document.getElementById('relato').value,
-        criacao: dataAtual
+        criacao: dataAtual,
+        status: 'pendente'
     }
     window.api.registerTask(chamado).then((result) => {
         location.reload()
     })
+})
+
+const logout_bt = document.getElementById('logout-bt')
+
+logout_bt.addEventListener('click', (event) => {
+    window.api.changePage('login')
 })
