@@ -4,32 +4,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     window.api.userchecked().then((cliente) => {
         client_name.innerHTML = `Olá, <strong>${cliente.nome}</strong>`
         cliente_nome = cliente.nome
+        carregarHistorico(cliente_nome)
     })
 
-    window.api.previous(cliente_nome).then((lista) =>{
-        let divHistorico = document.getElementById('historico')
-        divHistorico.innerHTML = <h3 class="titulo-card">Seu Histórico</h3>
-
-        lista.forEach(chamado => {
-            let andamento
-            let cores
-            if(chamado.status === 'pendente'){
-                andamento = 'Em Análise'
-                cores = 'style="font-size: 13px; color: #5f6368; margin: 8px 0;"'
-            }else{
-                andamento = 'Resolvido'
-                cores = 'class="badge" style="background:#e6f4ea; color:#137333;"'
-            }
-            divHistorico.innerHTML += `<div class="chamado-lista">
-                <div style="display: flex; justify-content: space-between;">
-                    <strong>${chamado.titulo}</strong>
-                    <span class="badge">${andamento}</span>
-                </div>
-                <p ${cores}>(Data de finalização ou andamento)</p>
-            </div>`
-            
-        });
-    })
+    
 })
 
 // document.getElementById('request-title').value
@@ -67,3 +45,31 @@ logout_bt.addEventListener('click', (event) => {
 })
 
 
+function carregarHistorico(nome){
+    window.api.previous(nome).then((lista) =>{
+        if(lista.length > 0){
+            let divHistorico = document.getElementById('historico')
+            divHistorico.innerHTML = '<h3 class="titulo-card">Seu Histórico</h3>'
+    
+            lista.forEach(chamado => {
+                let andamento
+                let cores
+                if(chamado.status === 'pendente'){
+                    andamento = 'Em Análise'
+                    cores = 'style="font-size: 13px; color: #5f6368; margin: 8px 0;"'
+                }else{
+                    andamento = 'Resolvido'
+                    cores = 'class="badge" style="background:#e6f4ea; color:#137333;"'
+                }
+                divHistorico.innerHTML += `<div class="chamado-lista">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>${chamado.titulo} #${chamado.id}</strong>
+                        <span class="badge">${andamento}</span>
+                    </div>
+                    <p ${cores}>(Data de finalização ou andamento)</p>
+                </div>`
+                
+            });
+        }
+    })
+}
