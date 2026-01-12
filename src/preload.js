@@ -7,5 +7,6 @@ contextBridge.exposeInMainWorld('api', {
     registerTask: (task) => ipcRenderer.invoke('guardar-chamado', task),
     requestTask: () => ipcRenderer.invoke('abrir-chamado'),
     updateTask: (chamado) => ipcRenderer.send('atualizar-chamado', chamado),
-    completedTask: () => ipcRenderer.invoke('abrir-concluidos')
+    completedTask: () => ipcRenderer.invoke('abrir-concluidos'),
+    previous: (nome) => ipcRenderer.invoke('registros-anteriores', nome)
 })

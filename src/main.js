@@ -102,9 +102,14 @@ ipcMain.on('atualizar-chamado', (event, chamado) => {
 
 
 
-
-
 // imprimir chamados prontos
 ipcMain.handle('abrir-concluidos', (event) => {
     return lista_chamados.filter(task => task.status === 'concluido')
+})
+
+// imprimir historico de chamados do cliente
+
+ipcMain.handle('registros-anteriores', (event, nome) => {
+    let historico = lista_chamados.filter(chamado => chamado.nome === nome)
+    return historico
 })
