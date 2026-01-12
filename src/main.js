@@ -80,6 +80,12 @@ ipcMain.handle('solicitar-login', (event, credenciais) => {
         return usuarioEncontrado
     }
     else{
+        dialog.showMessageBox({
+            type: 'info',
+            title: 'Dados inválidos!',
+            message: 'Usuário ou senha incorreto',
+            buttons: ['FECHAR']
+        })
         return false
     }
 })
