@@ -12,3 +12,4 @@ contextBridge.exposeInMainWorld('api', {
     selectTask: (id) => ipcRenderer.send('chamado-selecionado', id),
     loadcall: () => ipcRenderer.invoke('carregar-chamado')
 })
+

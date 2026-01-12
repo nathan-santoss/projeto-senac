@@ -63,8 +63,9 @@ function carregarHistorico(nome){
                 }
 
                 divHistorico.innerHTML += `<div class="chamado-lista">
-                    <div data-id ="${chamado.id} style="display: flex; justify-content: space-between;">
-                        <strong>${chamado.titulo} #${chamado.id}</strong>
+                    <div data-id ="${chamado.id}" style="display: flex; justify-content: space-between;">
+                        <strong>${chamado.titulo} #${chamado.id}</strong><br>
+                        <p>Criado em: ${chamado.criacao}</p>
                         <span class="badge">${andamento}</span>
                     </div>
                     <p ${cores}>(Data de finalização ou andamento)</p>

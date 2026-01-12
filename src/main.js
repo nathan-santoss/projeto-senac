@@ -7,8 +7,9 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const preload = path.join(__dirname, 'preload.js')
 
-const page_home = path.join(__dirname, '../app/login/login.html')
-const page_client = null // colocar 
+const page_login = path.join(__dirname, '../app/login/login.html')
+const page_client = path.join(__dirname, '../app/cliente/cliente.html')
+const page_task = path.join(__dirname, '../app/cliente/chamado/chamado.html')
 
 
 let win = null
@@ -24,7 +25,7 @@ const criarJanela = () => {
     })
     win.maximize()
     win.removeMenu()
-    win.loadFile(page_home)
+    win.loadFile(page_login)
 }
 
 app.whenReady().then(() => {
@@ -51,7 +52,10 @@ let usuarios = [
 ipcMain.on('mudar-pagina', (event, pagina) => {
     switch(pagina){
         case 'login':
-            win.loadFile(page_home)
+            win.loadFile(page_login)
+            break
+        case 'client':
+            win.loadFile(page_client)
             break
     }
 })
@@ -118,13 +122,12 @@ ipcMain.handle('registros-anteriores', (event, nome) => {
 let chamadoSelecionado
 ipcMain.on('chamado-selecionado', (event, id_chamado) => {
    chamadoSelecionado = lista_chamados.find(c => c.id === id_chamado)
-   if(!chamadoSelecionado){chamadoSelecionado === null}
-})
-ipcMain.handle('carregar-chamado', (event) => {
-    if(chamadoSelecionado === null){
-        // alerta personalizado
+   if(!chamadoSelecionado){
+        chamadoSelecionado = null
         return
     }
-    win.loadFile('../app/cliente/chamado/chamado.html')
+   win.loadFile(page_task)
+})
+ipcMain.handle('carregar-chamado', (event) => {
     return chamadoSelecionado
 })
