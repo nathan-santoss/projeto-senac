@@ -3,7 +3,7 @@ const login_bt = document.getElementById('login-bt')
 login_bt.addEventListener('click', (event) => {
     const user = {
         login: document.getElementById('email').value,
-        senha: document.getElementById('pass').value
+        senha: document.getElementById('pass').value, 
     }
     window.api.loginRequest(user).then((result) => {
         switch(result.type){

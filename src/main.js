@@ -69,14 +69,15 @@ ipcMain.on('mudar-pagina', (event, pagina) => {
 })
 
 // login personalizado com nome
-ipcMain.handle('solicitar-login', (event, usuario) => {
-    // console.log(usuario);
-    let existe = usuarios.find(user => user.email === usuario.login)
-    
-    // console.log(existe);
-    if(existe){
-        usuarioLogado = existe
-        return existe
+ipcMain.handle('solicitar-login', (event, credenciais) => {
+    const usuarioEncontrado = usuarios.find(user => 
+        (user.email === credenciais.login || user.nome === credenciais.login) && 
+        user.senha === credenciais.senha
+    );
+
+    if(usuarioEncontrado){
+        usuarioLogado = usuarioEncontrado
+        return usuarioEncontrado
     }
     else{
         return false
