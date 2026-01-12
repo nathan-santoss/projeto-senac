@@ -45,10 +45,10 @@ logout_bt.addEventListener('click', (event) => {
 })
 
 
+let divHistorico = document.getElementById('historico')
 function carregarHistorico(nome){
     window.api.previous(nome).then((lista) =>{
         if(lista.length > 0){
-            let divHistorico = document.getElementById('historico')
             divHistorico.innerHTML = '<h3 class="titulo-card">Seu Histórico</h3>'
     
             lista.forEach(chamado => {
@@ -61,8 +61,9 @@ function carregarHistorico(nome){
                     andamento = 'Resolvido'
                     cores = 'class="badge" style="background:#e6f4ea; color:#137333;"'
                 }
+
                 divHistorico.innerHTML += `<div class="chamado-lista">
-                    <div style="display: flex; justify-content: space-between;">
+                    <div data-id ="${chamado.id} style="display: flex; justify-content: space-between;">
                         <strong>${chamado.titulo} #${chamado.id}</strong>
                         <span class="badge">${andamento}</span>
                     </div>
@@ -73,3 +74,11 @@ function carregarHistorico(nome){
         }
     })
 }
+divHistorico.addEventListener('click', (event) => {
+    const chamadoClicado = event.target.closest('[data-id]')
+    if(chamadoClicado){
+        const id_chamado = chamadoClicado.getAttribute('data-id')
+        window.api.selectTask(id_chamado)
+    }
+})
+

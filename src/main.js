@@ -113,3 +113,18 @@ ipcMain.handle('registros-anteriores', (event, nome) => {
     let historico = lista_chamados.filter(chamado => chamado.nome === nome)
     return historico
 })
+
+// abrir chamado especifico do cliente - cliente
+let chamadoSelecionado
+ipcMain.on('chamado-selecionado', (event, id_chamado) => {
+   chamadoSelecionado = lista_chamados.find(c => c.id === id_chamado)
+   if(!chamadoSelecionado){chamadoSelecionado === null}
+})
+ipcMain.handle('carregar-chamado', (event) => {
+    if(chamadoSelecionado === null){
+        // alerta personalizado
+        return
+    }
+    win.loadFile('../app/cliente/chamado/chamado.html')
+    return chamadoSelecionado
+})
