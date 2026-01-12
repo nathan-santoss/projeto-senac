@@ -91,7 +91,7 @@ ipcMain.handle('user-checked', (event) => {
 
 // coletando solicitação do cliente
 let lista_chamados = []
-let chamadosTotais = 0
+let chamadosTotais
 ipcMain.handle('guardar-chamado', (event, chamado) => {
     chamado.id = `2026-00${chamadosTotais}`
     chamadosTotais++
@@ -169,7 +169,7 @@ function restaurarChamados(){
     try{
         let local = fs.readFileSync(save_chamados, 'utf-8')
         const lista_salva = JSON.parse(local)
-        if(lista_salva > 0){
+        if(lista_salva.length > 0){
             lista_chamados = lista_salva
             return
         }
@@ -182,8 +182,9 @@ function restaurarUsuarios(){
     try{
         let local = fs.readFileSync(save_usuarios, 'utf-8')
         const lista = JSON.parse(local)
-        if(lista > 0){
+        if(lista.length > 0){
             usuarios = lista
+            chamadosTotais = lista_chamados.length+1
             return
         }
     }catch(e){
