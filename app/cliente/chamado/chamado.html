@@ -134,6 +134,27 @@
             white-space: pre-wrap;
         }
 
+        /* Novo estilo para a Resposta */
+        .bloco-resposta {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px dashed #dadce0;
+        }
+
+        .texto-resposta {
+            width: 100%;
+            padding: 16px;
+            background: #e8f0fe;
+            border: 1px solid #c1d5f0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 100px;
+            color: #1967d2;
+            white-space: pre-wrap;
+        }
+
         .acoes-usuario { 
             display: flex; 
             align-items: center; 
@@ -158,6 +179,19 @@
         .botao-voltar:hover {
             background: #f8f9fa;
         }
+
+        .botao-sair { 
+            background: transparent; 
+            color: #d93025; 
+            border: 1px solid #dadce0; 
+            padding: 6px 16px; 
+            border-radius: 6px; 
+            font-size: 13px; 
+            font-weight: 500; 
+            cursor: pointer; 
+            transition: background 0.2s; 
+        }
+        .botao-sair:hover { background: #fff1f0; border-color: #d93025; }
     </style>
 </head>
 <body>
@@ -187,7 +221,7 @@
 
             <div class="grade-informacoes">
                 <div class="grupo-info">
-                    <span  class="rotulo">Nome do Cliente</span>
+                    <span class="rotulo">Nome do Cliente</span>
                     <div id="nome" class="valor" class="exibir-nome"></div>
                 </div>
                 <div class="grupo-info">
@@ -208,7 +242,12 @@
                 <span class="rotulo">Relato do Problema</span>
                 <div id="relato" class="texto-relato" class="exibir-relato"></div>
             </div>
-        </div>
+
+            <div class="bloco-resposta">
+                <span class="rotulo" style="color: #1a73e8;">Resposta do Suporte</span>
+                <div id="resposta" class="texto-resposta">Aguardando análise da equipe técnica...</div>
+            </div>
+            </div>
     </div>
 
     <script src="renderer.js"></script>

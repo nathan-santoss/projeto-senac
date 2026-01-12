@@ -31,7 +31,8 @@ enviar_bt.addEventListener('click', (event) => {
         relato: document.getElementById('relato').value,
         criacao: dataAtual,
         status: 'pendente',
-        id: undefined
+        id: undefined,
+        resposta: undefined
     }
     window.api.registerTask(chamado).then((result) => {
         location.reload()

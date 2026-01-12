@@ -1,0 +1,14 @@
+[
+  {
+    "nome": "Nathan Santos",
+    "email": "funcionarios@gmail.com",
+    "senha": "12345",
+    "type": "1"
+  },
+  {
+    "nome": "Rafael Manna",
+    "email": "cliente@gmail.com",
+    "senha": "12345",
+    "type": "2"
+  }
+]

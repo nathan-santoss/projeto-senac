@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('criacao').innerHTML = `${chamadoAtual.criacao}`
         document.getElementById('data-incidente').innerHTML = `${chamadoAtual.data_incidente}`
         document.getElementById('relato').innerHTML = `${chamadoAtual.relato}`
+        if(chamadoAtual.resposta !== undefined){
+            document.getElementById('resposta').innerHTML = `${chamadoAtual.resposta}`
+        }else{
+            document.getElementById('resposta').innerHTML = `Aguardando resposta da equipe...`
+        }
+
     })
 })
 

@@ -2,6 +2,7 @@ import { app, BrowserWindow, Menu, dialog, ipcMain } from "electron";
 import path from 'path'
 import { fileURLToPath } from "url";
 import fs from 'fs'
+import { json } from "stream/consumers";
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -29,7 +30,14 @@ const criarJanela = () => {
 }
 
 app.whenReady().then(() => {
+    restaurarChamados()
+    restaurarUsuarios()
     criarJanela()
+})
+app.on('window-all-closed', () => {
+    gravarChamados()
+    gravarUsuarios()
+    app.quit()
 })
 
 // tipo 1 = funcionarios
@@ -131,3 +139,51 @@ ipcMain.on('chamado-selecionado', (event, id_chamado) => {
 ipcMain.handle('carregar-chamado', (event) => {
     return chamadoSelecionado
 })
+
+
+// funcoes de gravacao e restauração de dados
+
+// gravar dados
+const save_chamados = path.join(__dirname, './data/chamados.json')
+function gravarChamados(){
+    let chamadosJSON = JSON.stringify(lista_chamados, null, 2)
+    fs.writeFileSync(save_chamados, chamadosJSON, 'utf-8')
+}
+
+const save_usuarios = path.join(__dirname, './data/users.json')
+function gravarUsuarios(){
+    if (!fs.existsSync(save_usuarios)) {return}
+
+    let usuariosJSON = JSON.stringify(usuarios, null, 2)
+    fs.writeFileSync(save_usuarios, usuariosJSON, 'utf-8')
+}
+
+// restaurar dados
+
+function restaurarChamados(){
+    if (!fs.existsSync(save_chamados)){ return}
+
+    try{
+        let local = fs.readFileSync(save_chamados, 'utf-8')
+        const lista_salva = JSON.parse(local)
+        if(lista_salva > 0){
+            lista_chamados = lista_salva
+            return
+        }
+    }catch(e){
+        return
+    }
+}
+
+function restaurarUsuarios(){
+    try{
+        let local = fs.readFileSync(save_usuarios, 'utf-8')
+        const lista = JSON.parse(local)
+        if(lista > 0){
+            usuarios = lista
+            return
+        }
+    }catch(e){
+        return
+    }
+}
