@@ -45,8 +45,8 @@ const carregar_chamado = (chamados) => {
 
 const send_bt = document.getElementById('send-bt')
 send_bt.addEventListener('click', (event) => {
-    chamadoAtual.resposta = document.getElementById('resposta').value
-    window.api.updateTask(chamadoAtual)
+    let resposta = document.getElementById('resposta').value
+    window.api.updateTask(chamadoAtual, resposta)
     setTimeout(() => {
         location.reload()
     }, 100);
